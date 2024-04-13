@@ -1,0 +1,3 @@
+#!/bin/bash
+# bin/exec-env
+echo "PATH=$ASDF_INSTALL_PATH/bin:$PATH"
