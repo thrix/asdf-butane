@@ -1,5 +1,5 @@
 #!/bin/bash
 # bin/list-all
 curl -s "https://api.github.com/repos/coreos/butane/releases" | \
-  grep -oP '"tag_name": "\K(.*)(?=")' | \
+  grep -oP '"tag_name": "v\K\d+\.\d+\.\d+' | \
   sort -V
