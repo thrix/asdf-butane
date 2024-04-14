@@ -5,14 +5,21 @@ set -e
 
 VERSION="$1"
 ARCH="$(uname -m)"
+OS="$(uname | tr '[:upper:]' '[:lower:]')"
 
-if [ "$ARCH" == "x86_64" ]; then
-  ARCH="amd64"
+# Check if we are on macOS or Linux and adjust download URL accordingly
+if [ "$OS" == "darwin" ]; then
+  SYSTEM="apple-darwin"
+elif [ "$OS" == "linux" ]; then
+  SYSTEM="unknown-linux-gnu"
+else
+  echo "Unsupported OS: $OS"
+  exit 1
 fi
 
-URL="https://github.com/coreos/butane/releases/download/${VERSION}/butane-x86_64-unknown-linux-gnu"
+URL="https://github.com/coreos/butane/releases/download/v${VERSION}/butane-${ARCH}-${SYSTEM}"
 
 curl -L "$URL" -o "butane"
 chmod +x "butane"
 mkdir -p "${ASDF_INSTALL_PATH}/bin"
-mv butane "${ASDF_INSTALL_PATH}/bin/"
+mv -f butane "${ASDF_INSTALL_PATH}/bin/"
