@@ -9,12 +9,12 @@ OS="$(uname | tr '[:upper:]' '[:lower:]')"
 
 # Check if we are on macOS or Linux and adjust download URL accordingly
 if [ "$OS" == "darwin" ]; then
-  SYSTEM="apple-darwin"
+    SYSTEM="apple-darwin"
 elif [ "$OS" == "linux" ]; then
-  SYSTEM="unknown-linux-gnu"
+    SYSTEM="unknown-linux-gnu"
 else
-  echo "Unsupported OS: $OS"
-  exit 1
+    echo "Unsupported OS: $OS"
+    exit 1
 fi
 
 URL="https://github.com/coreos/butane/releases/download/v${VERSION}/butane-${ARCH}-${SYSTEM}"

@@ -19,3 +19,9 @@ repos:
     rev: 3.0.0
     hooks:
       - id: shellcheck
+
+  # Shell format
+  - repo: https://github.com/pecigonzalo/pre-commit-shfmt
+    rev: v2.1.0
+    hooks:
+      - id: shell-fmt
